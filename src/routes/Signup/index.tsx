@@ -1,12 +1,13 @@
 import { Dispatch } from "redux";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 
-import "./style.css";
-import {signUp} from "./../../store/actions/index";
+import { signUp } from "./../../store/actions/index";
+
+import styled from "styled-components";
 
 interface propsType {
-  signUp: (name: string,id:string,pass:string) => void;
+  signUp: (name: string, id: string, pass: string) => void;
 }
 const Signup = (props: propsType) => {
   const [name, setName] = useState("");
@@ -14,6 +15,7 @@ const Signup = (props: propsType) => {
   const [password, setPassword] = useState("");
 
   const inputNameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    console.log(e.target.value);
     setName(e.target.value);
   };
 
@@ -25,43 +27,81 @@ const Signup = (props: propsType) => {
     setPassword(e.target.value);
   };
 
-  const inputSubmit = ():void=>{
- 
-   props.signUp(name, userId, password);
-   setPassword(".....");
+  const inputSubmit = (): void => {
+
+    props.signUp(name, userId, password);
+    setPassword(".....");
   }
 
-  return (
+// const StyledInputDiv = styled.div`
+// background-color:blue;`
+
+const StyledInput = styled.input`
+    width:400px;
+   ;`
+
+  // const StyledCheckInput = styled.input`
+
+  //   margin-left: 819px;  
+  //   margin-top: 10px;
+  //   background-color: blue;`
+
+  const StyledButton = styled.button`
+    padding: 8px 16px;
+    width: 445px;
+    height: 50px;
+    margin-left: 819px;
+    margin-top: 40px;
+    background: blue;
+    color:white;
+    border: 1px solid #F1F1FA;
+    border-radius: 16px;`
+
+  // const Styleddiv = styled.div`
+  //   background-color:pink;
+  //   width:400px;`
+
+
+  // width: 400px;
+  // height: 40px;
+  // margin-left: 819px;
+  // margin-top: 40px;
+  // background: #FFFFFF;
+  // border: 1px solid #F1F1FA;
+  // border-radius: 16px
+
+  return (<Fragment>
+    <div><h3>Welcome,</h3><h1>Get Started</h1></div>
     <div>
-      <input
-        id="signup_name_input"
+      <StyledInput
         type="text"
-        placeholder="Enter Your Name"
+        placeholder="Name"
         value={name}
         onChange={inputNameHandler}
-      ></input>
-      <input
-        id="signup_id_input"
+      />
+      <StyledInput
         type="text"
-        placeholder="Enter Your email id"
+        placeholder="Email"
         value={userId}
         onChange={inputIdHandler}
-      ></input>
-      <input
-        id="signup_pass_input"
+      ></StyledInput>
+      <StyledInput
         type="text"
-        placeholder="Create Your password"
+        placeholder="Password"
         value={password}
         onChange={inputPassHandler}
-      ></input>
-      <button onClick={inputSubmit}>SignUp</button>
+      ></StyledInput>
+      <input type="checkbox" name="signup" value="signup-page"></input>
+
+      <button onClick={inputSubmit} id="signup-button">SignUp</button>
     </div>
+  </Fragment>
   );
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    signUp: (name:string,id:string,pass:string) => dispatch(signUp(name,id,pass)),
+    signUp: (name: string, id: string, pass: string) => dispatch(signUp(name, id, pass)),
 
   };
 };
