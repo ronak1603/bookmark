@@ -3,11 +3,12 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import {v4 as uuid} from "uuid";
 
-import { ROOT_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from "../utils/paths";
+import { ROOT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE } from "../utils/paths";
 
 import Login from "./Login/index";
 import Signup from "./Signup/index";
 import Home from "./Home";
+import Profile from "./Profile";
 
 const routesConfig = [
   {
@@ -25,6 +26,11 @@ const routesConfig = [
     component: <Home />,
     privateRoute: true,
   },
+  {
+    path: PROFILE_ROUTE,
+    component: <Profile />,
+    privateRoute: false,
+  }
 ];
 
 const elements = (component: ReactNode, privateRoute: boolean) => {

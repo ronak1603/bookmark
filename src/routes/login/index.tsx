@@ -198,8 +198,8 @@ function Login() {
   const StyledButton = styled.button`
     // padding: 8px 16px;
     width: 73%;
-    height: 8%;
-    margin-top: 2%;
+    height: 9%;
+    margin-top: 4%;
     background:#5352ED;
     color:white;
     border: 1px solid #F1F1FA;
@@ -212,42 +212,42 @@ function Login() {
     @media screen and (max-width:300px){
       height:9%;
       width:90%;
-      margin-top:5%;
+      margin-top:6%;
     }
     @media screen and (min-width:301px) and (max-width:400px){
       height:10%;
       width:90%;
-      margin-top:5%;
+      margin-top:6%;
     }
     @media screen and (min-width:401px) and (max-width:500px){
       height:10%;
       width:90%;
-      margin-top:5%;
+      margin-top:6%;
     }
     @media screen and (min-width:501px) and (max-width:600px){
       height:10%;
       width:90%;
-      margin-top:5%;
+      margin-top:6%;
     }
     @media screen and (min-width:601px) and (max-width:900px){
-      height:8%;
-      width:80%;
-      margin-top:5%;
-    }
-    @media screen and (min-width:901px) and (max-width:1050px){
       height:9%;
       width:80%;
       margin-top:5%;
     }
-    @media screen and (min-width:1051px) and (max-width:1200px){
+    @media screen and (min-width:901px) and (max-width:1050px){
       height:10%;
       width:80%;
-      margin-top:5%;
+      margin-top:6%;
+    }
+    @media screen and (min-width:1051px) and (max-width:1200px){
+      height:11%;
+      width:80%;
+      margin-top:6%;
     }
     @media screen and (min-width:1201px) and (max-width:1500px){
-      height:10%;
+      height:11%;
       width:80%;
-      margin-top:5%;
+      margin-top:6%;
     }
     `
   const StyledText = styled.div`
