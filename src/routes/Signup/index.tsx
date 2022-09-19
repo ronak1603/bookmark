@@ -1,12 +1,19 @@
 import { Dispatch } from "redux";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 
-import "./style.css";
-import {signUp} from "./../../store/actions/index";
+import { signUp } from "./../../store/actions/index";
+
+import styled from "styled-components";
+import * as style from "./style";
+
+import { FcGoogle } from "react-icons/fc";
+import { AiOutlineEye } from "react-icons/ai";
+
+import foto from "./../../assests/foto.svg";
 
 interface propsType {
-  signUp: (name: string,id:string,pass:string) => void;
+  signUp: (name: string, id: string, pass: string) => void;
 }
 const Signup = (props: propsType) => {
   const [name, setName] = useState("");
@@ -14,6 +21,7 @@ const Signup = (props: propsType) => {
   const [password, setPassword] = useState("");
 
   const inputNameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    // console.log(e.target.value);
     setName(e.target.value);
   };
 
@@ -25,44 +33,62 @@ const Signup = (props: propsType) => {
     setPassword(e.target.value);
   };
 
-  const inputSubmit = ():void=>{
- 
-   props.signUp(name, userId, password);
-   setPassword(".....");
+  const inputSubmit = (): void => {
+
+    props.signUp(name, userId, password);
+    setPassword(".....");
   }
 
-  return (
-    <div>
-      <input
-        id="signup_name_input"
-        type="text"
-        placeholder="Enter Your Name"
-        value={name}
-        onChange={inputNameHandler}
-      ></input>
-      <input
-        id="signup_id_input"
-        type="text"
-        placeholder="Enter Your email id"
-        value={userId}
-        onChange={inputIdHandler}
-      ></input>
-      <input
-        id="signup_pass_input"
-        type="text"
-        placeholder="Create Your password"
-        value={password}
-        onChange={inputPassHandler}
-      ></input>
-      <button onClick={inputSubmit}>SignUp</button>
-    </div>
+  return (<Fragment>
+    <style.StyleMainDiv>
+      <style.LeftDiv>
+        <style.HeadingDiv>Welcome,<br /><b>Get Started</b></style.HeadingDiv>
+        <style.Styleimg src={foto} />
+      </style.LeftDiv>
+      
+      <style.Rightdiv>
+        <style.StyledDiv>
+          <style.StyledInput
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={inputNameHandler}
+          />
+          <style.StyledInput
+            type="text"
+            placeholder="Email"
+          value={userId}
+          onChange={inputIdHandler}
+          ></style.StyledInput>
+          <style.PasswordDiv>
+            <style.PassInput
+              type="password"
+              placeholder="Password"
+            value={password}
+            onChange={inputPassHandler}
+            ></style.PassInput>
+            <style.EyeDiv><AiOutlineEye /></style.EyeDiv>
+          </style.PasswordDiv>
+          <style.CheckDiv>
+            <style.CheckInput type="checkbox" name="signup" value="signup-page"></style.CheckInput>
+            <style.CheckText>By signing up, you agree to the <style.StyledLink href="/terms">Terms of Service and Privacy Policy</style.StyledLink></style.CheckText>
+          </style.CheckDiv>
+          <style.StyledButton id="signup-button" onClick={inputSubmit}>Sign Up</style.StyledButton>
+          <style.StyledText> Or with </style.StyledText>
+          <style.GoogleButton id="signup-button"><style.StyleIconDiv><FcGoogle size="70%" /></style.StyleIconDiv><style.StyleIconText>Sign Up with Google</style.StyleIconText></style.GoogleButton>
+          <style.LoginText>Already have an account? &nbsp; <style.SignUpLink href="/login">Login</style.SignUpLink></style.LoginText>
+        </style.StyledDiv>
+      </style.Rightdiv>
+    </style.StyleMainDiv>
+  </Fragment>
   );
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    signUp: (name:string,id:string,pass:string) => dispatch(signUp(name,id,pass)),
+    signUp: (name: string, id: string, pass: string) => dispatch(signUp(name, id, pass)),
 
   };
 };
+
 export default connect(null, mapDispatchToProps)(Signup);
