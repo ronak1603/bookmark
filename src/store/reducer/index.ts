@@ -1,16 +1,8 @@
-import { SIGNUP } from '../actionTypes';
-import {signUpType,stateType} from './types';
+import { combineReducers } from "redux";
 
-const initialState:stateType = {
-    users : [],
-}
-export const reducer = (state = initialState, action:signUpType) => {
-    switch(action.type){
-        case SIGNUP:
-            return {
-                ...state,
-                users:[...state.users,{name:action.payload.name, userId:action.payload.userId, password:action.payload.password}]
-            }
-        default: return state;
-    }
-}
+import {profileReducer, signUpReducer} from "../reducer/userAuth/index";
+
+export default combineReducers({
+  profileReducer,
+  signUpReducer
+});
