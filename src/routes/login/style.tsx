@@ -54,7 +54,7 @@ export const Rightdiv = styled.div`
   }
   `
 
-export const StyledDiv = styled.div`
+export const StyledDiv = styled.form`
   display:flex;
   flex-direction:column;
   width:70%;
@@ -89,6 +89,7 @@ export const StyledInput = styled.input`
   background: #FFFFFF;  
   border: 1px solid #F1F1FA;
   border-radius: 16px;
+  padding-left:2%;
   margin-top:5%;
   width: 70.5%;
   height: 8%;
@@ -109,28 +110,29 @@ export const StyledInput = styled.input`
     width:90%;
   }
   @media screen and (min-width:601px) and (max-width:900px){
-    height:8%;
+    height:6%;
     width:80%;
   }
   @media screen and (min-width:901px) and (max-width:1050px){
-    height:9%;
+    height:7%;
     width:80%;
   }
   @media screen and (min-width:1051px) and (max-width:1200px){
-    height:10%;
+    height:8%;
     width:80%;
   }
   @media screen and (min-width:1201px) and (max-width:1500px){
-    height:10%;
+    height:8%;
     width:80%;
   }
   `
 export const PasswordDiv = styled.div`
     display:flex;
-    flex-direction:row;
+    // flex-direction:row;
     align-items:center;
-    background: #FFFFFF;  
-    border: 2px solid #F1F1FA;
+    background: #FFFFFF;
+   
+    // border: 2px solid #F1F1FA;
     border-radius: 16px;
     margin-top:5%;
     width: 71%;
@@ -149,26 +151,28 @@ export const PasswordDiv = styled.div`
       width:90%;
     }
     @media screen and (min-width:601px) and (max-width:900px){
-      height:8%;
+      height:6%;
       width:80%;
     }
     @media screen and (min-width:901px) and (max-width:1050px){
-      height:9%;
+      height:7%;
       width:80%;
     }
     @media screen and (min-width:1051px) and (max-width:1200px){
-      height:10%;
+      height:8%;
       width:80%;
     }
     @media screen and (min-width:1201px) and (max-width:1500px){
-      height:10%;
+      height:8%;
       width:80%;
     }
     `
 export const PassInput = styled.input`
     width:95%;
     border:none;
+    padding-left:5%;
     height:100%;
+    border: 1px solid #F1F1FA;
     border-radius: 16px;
     font-family: 'Inter', sans-serif;
     &::-webkit-input-placeholder{
@@ -180,6 +184,7 @@ export const PassInput = styled.input`
     `
 export const EyeDiv = styled.div`
 padding-right:2%;
+margin-left:-2em;
     `
 
 export const StyledButton = styled.button`
@@ -217,22 +222,22 @@ export const StyledButton = styled.button`
     margin-top:6%;
   }
   @media screen and (min-width:601px) and (max-width:900px){
-    height:9%;
+    height:7%;
     width:80%;
-    margin-top:5%;
+    margin-top:7%;
   }
   @media screen and (min-width:901px) and (max-width:1050px){
-    height:10%;
+    height:8%;
     width:80%;
     margin-top:6%;
   }
   @media screen and (min-width:1051px) and (max-width:1200px){
-    height:11%;
+    height:9%;
     width:80%;
     margin-top:6%;
   }
   @media screen and (min-width:1201px) and (max-width:1500px){
-    height:11%;
+    height:9%;
     width:80%;
     margin-top:6%;
   }
@@ -288,3 +293,10 @@ color: #5352ED;`
 
 export const SignUpLink = styled.a`
 color: #5352ED;`
+
+export const ErrorDiv = styled.div`
+padding-top:2%;
+// margin-right:25%;
+font-size:small;
+color:red;
+// border:1px solid black;`

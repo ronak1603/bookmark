@@ -1,47 +1,46 @@
 
-import { types} from '../../actionTypes';
-import { signUpType, stateType, userProfileType } from '../../reducer/userAuth/type';
+import { types } from '../../actionTypes';
+import { actionType, stateType } from '../../reducer/userAuth/type';
 
 
 const initialState: stateType = {
     users: [],
     error: "",
-    isLoading:true,
+    // isLoading:true,
 }
 
-export const signUpReducer = (state = initialState, action:signUpType) => {
-    switch(action.type){
-        case types.USER_SIGNUP_SUCCESS:
+export const userAuthReducer = (state = initialState, action: actionType) => {
+    switch (action.type) {
+        case "USER_SIGNUP_SUCCESS":
             return {
                 ...state,
-                users:[...state.users,{name:action.payload.name, userId:action.payload.userId, password:action.payload.password}]
+                users: [
+                    ...state.users, 
+                    {...action.payload.user},
+                ]
+            }
+        case "USER_SIGNUP_FAILURE":
+            return {
+                ...state,
+                error: action.payload.message,
+            }
+        case "USER_LOGIN_SUCCESS":
+            return {
+                ...state,
+                users: [
+                    ...state.users, 
+                    {...action.payload.user},
+                ]
+            }
+        case "USER_LOGIN_FAILURE":
+            return {
+                ...state,
+                error: action.payload.message,
             }
         default: return state;
     }
 }
 
-export const profileReducer = (state = initialState, action: userProfileType) => {
-    switch (action.type) {
-        case types.USER_PROFILE_SUCCESS:
-            return {
-                ...state,
-                users: [
-                    ...action.data, 
-                ],
-                isLoading:false,
-            }
-        case types.USER_PROFILE_FAILURE:
-            return {
-                ...state,
-                error: action.data,
-                isLoading:false,
-            }
-        default:
-            return {
-                ...state,
-            }
-    }
-}
 
 
 

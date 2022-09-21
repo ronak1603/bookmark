@@ -54,7 +54,7 @@ import styled from "styled-components";
     }
     `
 
-  export const StyledDiv = styled.div`
+  export const StyledDiv = styled.form`
     display:flex;
     flex-direction:column;
     width:70%;
@@ -91,37 +91,41 @@ import styled from "styled-components";
     border-radius: 16px;
     margin-top:5%;
     width: 70.5%;
-    height: 8%;
+    padding:2%;
+    height: 6%;
     font-family: 'Inter', sans-serif;
     &::-webkit-input-placeholder{
       padding-left:3%;
     }
+    &::-webkit-input-value{
+      padding-left:3%;
+    }
     @media screen and (max-width:300px){
-      height:8%;
+      height:5%;
       width:90%;
     }
     @media screen and (min-width:301px) and (max-width:500px){
-      height:9%;
+      height:5%;
       width:90%;
     }
     @media screen and (min-width:501px) and (max-width:600px){
-      height:10%;
+      height:5%;
       width:90%;
     }
     @media screen and (min-width:601px) and (max-width:900px){
-      height:8%;
+      height:5%;
       width:80%;
     }
     @media screen and (min-width:901px) and (max-width:1050px){
-      height:9%;
+      height:5%;
       width:80%;
     }
     @media screen and (min-width:1051px) and (max-width:1200px){
-      height:10%;
+      height:5%;
       width:80%;
     }
     @media screen and (min-width:1201px) and (max-width:1500px){
-      height:20%;
+      height:5%;
       width:80%;
     }
     `
@@ -132,36 +136,36 @@ import styled from "styled-components";
       background: #FFFFFF;  
       border: 2px solid #F1F1FA;
       border-radius: 16px;
-      margin-top:5%;
+      margin-top:7%;
       width: 71%;
-      height: 8%;
+      height: 5%;
       font-family: 'Inter', sans-serif;
       @media screen and (max-width:300px){
-        height:8%;
+        height:5%;
         width:90%;
       }
       @media screen and (min-width:301px) and (max-width:500px){
-        height:9%;
+        height:5%;
         width:90%;
       }
       @media screen and (min-width:501px) and (max-width:600px){
-        height:10%;
+        height:5%;
         width:90%;
       }
       @media screen and (min-width:601px) and (max-width:900px){
-        height:8%;
+        height:5%;
         width:80%;
       }
       @media screen and (min-width:901px) and (max-width:1050px){
-        height:9%;
+        height:6%;
         width:80%;
       }
       @media screen and (min-width:1051px) and (max-width:1200px){
-        height:10%;
+        height:6%;
         width:80%;
       }
       @media screen and (min-width:1201px) and (max-width:1500px){
-        height:20%;
+        height:6%;
         width:80%;
       }
       `
@@ -169,6 +173,7 @@ import styled from "styled-components";
       width:95%;
       border:none;
       height:100%;
+      padding:4%;
       border-radius: 16px;
       font-family: 'Inter', sans-serif;
       &::-webkit-input-placeholder{
@@ -180,6 +185,7 @@ import styled from "styled-components";
       `
       export const EyeDiv = styled.div`
   padding-right:2%;
+  margin-left:-2em;
       `
 
       export const CheckDiv = styled.div`
@@ -292,43 +298,44 @@ import styled from "styled-components";
     font-weight: 600;
     font-size: 90%;
     line-height: 22px;
+    cursor:pointer;
     @media screen and (max-width:300px){
-      height:9%;
+      height:7%;
       width:90%;
       margin-top:15%;
     }
     @media screen and (min-width:301px) and (max-width:400px){
-      height:10%;
+      height:8%;
       width:90%;
       margin-top:10%;
     }
     @media screen and (min-width:401px) and (max-width:500px){
-      height:10%;
+      height:8%;
       width:90%;
       margin-top:5%;
     }
     @media screen and (min-width:501px) and (max-width:600px){
-      height:10%;
+      height:8%;
       width:93%;
       margin-top:5%;
     }
     @media screen and (min-width:601px) and (max-width:900px){
-      height:8%;
+      height:6%;
       width:80%;
       margin-top:10%;
     }
     @media screen and (min-width:901px) and (max-width:1050px){
-      height:9%;
+      height:7%;
       width:80%;
       margin-top:4%;
     }
     @media screen and (min-width:1051px) and (max-width:1200px){
-      height:10%;
+      height:8%;
       width:80%;
       margin-top:4%;
     }
     @media screen and (min-width:1201px) and (max-width:1500px){
-      height:20%;
+      height:8%;
       width:80%;
       margin-top:5%;
     }
@@ -368,31 +375,31 @@ import styled from "styled-components";
     align-items:center;
     justify-content:center;
     @media screen and (max-width:300px){
-      height:10%;
+      height:7%;
       width:90%;
     }
     @media screen and (min-width:301px) and (max-width:500px){
-      height:10%;
+      height:7%;
       width:90%;
     }
     @media screen and (min-width:501px) and (max-width:600px){
-      height:10%;
+      height:8%;
       width:90%;
     }
     @media screen and (min-width:601px) and (max-width:900px){
-      height:9%;
+      height:7%;
       width:80%;
     }
     @media screen and (min-width:901px) and (max-width:1050px){
-      height:9%;
+      height:7%;
       width:80%;
     }
     @media screen and (min-width:1051px) and (max-width:1200px){
-      height:10%;
+      height:8%;
       width:80%;
     }
     @media screen and (min-width:1201px) and (max-width:1500px){
-      height:20%;
+      height:8%;
       width:80%;
     }`
 
@@ -487,3 +494,11 @@ import styled from "styled-components";
 
   export const SignUpLink = styled.a`
   color: #5352ED;`
+
+  export const ErrorDiv = styled.div`
+  padding-top:2%;
+  // margin-right:25%;
+  font-size:small;
+  color:red;
+  // border:1px solid black;  
+`

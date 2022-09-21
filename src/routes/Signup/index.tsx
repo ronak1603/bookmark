@@ -2,78 +2,117 @@ import React, { Fragment, useState } from "react";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 
+import { useFormik } from "formik";
+
 import { FcGoogle } from "react-icons/fc";
-import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 
-import { signUpSuccess } from "./../../store/actions/index";
+import { signUpRequest } from "./../../store/actions/index";
 import * as style from "./style";
 import foto from "./../../assests/foto.svg";
+import { signUpSchema } from "../../schemas/index"
+
 
 interface propsType {
-  signUp: (name: string, id: string, pass: string) => void;
+  signUp: (obj: any) => void;
 }
 const Signup = (props: propsType) => {
-  const [name, setName] = useState("");
-  const [userId, setUserId] = useState("");
-  const [password, setPassword] = useState("");
+  // const [name, setName] = useState("");
+  // const [userId, setUserId] = useState("");
+  // const [password, setPassword] = useState("");
+  const [togglePassword, setTogglePassword] = useState(false);
 
-  const inputNameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    // console.log(e.target.value);
-    setName(e.target.value);
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
   };
 
-  const inputIdHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserId(e.target.value);
-  };
+  const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
+    useFormik({
+      initialValues,
+      validationSchema: signUpSchema,
+      validateOnChange: true,
+      validateOnBlur: false,
+      onSubmit: (values, action) => {
+      console.log(values);
+        // let obj = {
+        //   name: values.name,
+        //   email: values.email,
+        //   password: values.password,
+        // }
+        props.signUp(values);
+        action.resetForm();
+      },
+    });
 
-  const inputPassHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setPassword(e.target.value);
-  };
+  // const inputSubmit = (): void => {
+  //   setPassword(".....");
+  // }
 
-  const inputSubmit = (): void => {
-
-    props.signUp(name, userId, password);
-    setPassword(".....");
+  const handleToggler = (): void => {
+    setTogglePassword(prevTogglePassword => !prevTogglePassword)
   }
 
-  return (<Fragment>
+  return (
+  <Fragment>
     <style.StyleMainDiv>
       <style.LeftDiv>
         <style.HeadingDiv>Welcome,<br /><b>Get Started</b></style.HeadingDiv>
         <style.Styleimg src={foto} />
       </style.LeftDiv>
-      
+
       <style.Rightdiv>
-        <style.StyledDiv>
+        <style.StyledDiv onSubmit={(e:any) => { e.preventDefault(); handleSubmit()}}>
           <style.StyledInput
             type="text"
             placeholder="Name"
-            value={name}
-            onChange={inputNameHandler}
+            autoComplete="off"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
+
+          <style.ErrorDiv>{touched.name && errors.name ? (<p>{errors.name}</p>) : null}</style.ErrorDiv>
+
           <style.StyledInput
-            type="text"
+            type="email"
             placeholder="Email"
-          value={userId}
-          onChange={inputIdHandler}
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
           ></style.StyledInput>
+
+          <style.ErrorDiv>{touched.email && errors.email ? (<p>{errors.email}</p>) : null}</style.ErrorDiv>
+
           <style.PasswordDiv>
             <style.PassInput
-              type="password"
+              type={togglePassword ? "text" : "password"}
+              name="password"
               placeholder="Password"
-            value={password}
-            onChange={inputPassHandler}
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
             ></style.PassInput>
-            <style.EyeDiv><AiOutlineEye /></style.EyeDiv>
+
+            <style.EyeDiv onClick={handleToggler}>{togglePassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</style.EyeDiv>
           </style.PasswordDiv>
+
+          <style.ErrorDiv>{touched.password && errors.password ? (<p>{errors.password}</p>) : null}</style.ErrorDiv>
+
           <style.CheckDiv>
             <style.CheckInput type="checkbox" name="signup" value="signup-page"></style.CheckInput>
             <style.CheckText>By signing up, you agree to the <style.StyledLink href="/terms">Terms of Service and Privacy Policy</style.StyledLink></style.CheckText>
           </style.CheckDiv>
-          <style.StyledButton id="signup-button" onClick={inputSubmit}>Sign Up</style.StyledButton>
+
+          <style.StyledButton  type="submit">Sign Up</style.StyledButton>
+
           <style.StyledText> Or with </style.StyledText>
-          <style.GoogleButton id="signup-button"><style.StyleIconDiv><FcGoogle size="70%" /></style.StyleIconDiv><style.StyleIconText>Sign Up with Google</style.StyleIconText></style.GoogleButton>
+
+          <style.GoogleButton ><style.StyleIconDiv><FcGoogle size="70%" /></style.StyleIconDiv><style.StyleIconText>Sign Up with Google</style.StyleIconText></style.GoogleButton>
           <style.LoginText>Already have an account? &nbsp; <style.SignUpLink href="/login">Login</style.SignUpLink></style.LoginText>
         </style.StyledDiv>
       </style.Rightdiv>
@@ -84,7 +123,7 @@ const Signup = (props: propsType) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    signUp: (name: string, id: string, pass: string) => dispatch(signUpSuccess(name, id, pass)),
+    signUp: (obj: any) => dispatch(signUpRequest(obj)),
 
   };
 };

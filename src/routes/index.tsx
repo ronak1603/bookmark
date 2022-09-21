@@ -28,7 +28,7 @@ const routesConfig = [
 ];
 
 const elements = (component: ReactNode, privateRoute: boolean) => {
-  const isUserPresent = localStorage.getItem("Login");
+  const isUserPresent = localStorage.getItem("token");
   const isValidRoute =
     (privateRoute && isUserPresent) || !(privateRoute || isUserPresent);
     if(isValidRoute)
