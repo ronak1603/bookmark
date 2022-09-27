@@ -1,4 +1,4 @@
-import { types} from '../../actionTypes';
+import actionTypes from '../../actionTypes';
  export interface userType{
   name:string,
   email:string,
@@ -12,7 +12,7 @@ import { types} from '../../actionTypes';
 export interface stateType {
     users: userType[],
     error:string,
-    // isLoading:boolean
+    loginSpinner: boolean,
   }
 
   type signUpSuccess = {

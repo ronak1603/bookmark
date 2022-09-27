@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-
+import { useNavigate } from "react-router";
 import { useFormik } from "formik";
 
 import { FcGoogle } from "react-icons/fc";
@@ -22,12 +22,15 @@ const Signup = (props: propsType) => {
   // const [userId, setUserId] = useState("");
   // const [password, setPassword] = useState("");
   const [togglePassword, setTogglePassword] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const initialValues = {
     name: "",
     email: "",
     password: "",
   };
+
+  // const navigate = useNavigate();
 
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
     useFormik({
@@ -55,6 +58,11 @@ const Signup = (props: propsType) => {
     setTogglePassword(prevTogglePassword => !prevTogglePassword)
   }
 
+  // const afterSignup = ()=>{
+  //   console.log("abuytt to navuiagey et==to")
+  //   navigate("/about");
+  // }
+
   return (
   <Fragment>
     <style.StyleMainDiv>
@@ -64,7 +72,7 @@ const Signup = (props: propsType) => {
       </style.LeftDiv>
 
       <style.Rightdiv>
-        <style.StyledDiv onSubmit={(e:any) => { e.preventDefault(); handleSubmit()}}>
+        <style.StyledDiv onSubmit={(e:any) => { e.preventDefault(); handleSubmit() ; }}>
           <style.StyledInput
             type="text"
             placeholder="Name"

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 
 import { ROOT_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from "../utils/paths";
 
@@ -31,9 +31,13 @@ const elements = (component: ReactNode, privateRoute: boolean) => {
   const isUserPresent = localStorage.getItem("token");
   const isValidRoute =
     (privateRoute && isUserPresent) || !(privateRoute || isUserPresent);
-    if(isValidRoute)
-      return component;
-  return <Navigate to = {privateRoute?'/login':'/home'}/>
+  if (isValidRoute)
+    return component;
+  return (
+  <>
+  <Navigate to = {privateRoute?'/login':'/home'}/>,
+  <Navigate to = {privateRoute?'/':'/home'}/>
+  </>)
 };
 
 const AppRoutes = () => {

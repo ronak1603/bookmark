@@ -32,13 +32,13 @@ function Login(props: propsType) {
   //   setPassword(e.target.value);
   // };
 
-  const inputSubmit = (): void => {
-    let obj = {
-      email: userId,
-      password: password,
-    }
-    props.login(obj);
-  }
+  // const inputSubmit = (): void => {
+  //   let obj = {
+  //     email: userId,
+  //     password: password,
+  //   }
+  //   props.login(obj);
+  // }
 
   const handleToggler = (): void => {
     setTogglePassword(prevTogglePassword => !prevTogglePassword)
@@ -57,11 +57,6 @@ function Login(props: propsType) {
       validateOnBlur: false,
       onSubmit: (values, action) => {
       console.log(values);
-        // let obj = {
-        //   name: values.name,
-        //   email: values.email,
-        //   password: values.password,
-        // }
         props.login(values);
         action.resetForm();
       },
@@ -76,7 +71,7 @@ function Login(props: propsType) {
 
       </style.LeftDiv>
       <style.Rightdiv>
-        <style.StyledDiv  onSubmit={(e:any) => { e.preventDefault(); handleSubmit()}}>
+        <style.StyledDiv  onSubmit={(e:any) => {e.preventDefault(); handleSubmit();}}>
 
           <style.StyledInput
              type="email"
