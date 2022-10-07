@@ -48,4 +48,19 @@ export type GetFoldersFailure = {
         error:string,
     }
 }
+
+export type GetMeSuccess = {
+    type:"GET_ME_SUCCESS",
+    payload:{
+        obj:UserType[],
+    }
+}
+
+export type GetMeFailure = {
+    type:"GET_ME_FAILURE",
+    payload:{
+        error:string
+    }
+}
+
 export type FolderActionType = CreateFolderSuccess| CreateFolderFailure| GetFoldersSuccess| GetFoldersFailure;

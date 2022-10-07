@@ -7,7 +7,7 @@ export function* deleteBookmark(action:any) : any {
         let user=action.payload.obj;
         let response = yield deleteBookmarkApi(user);
        
-        yield put(actions.deleteBookmarkSuccess(response));
+        yield put(actions.deleteBookmarkSuccess(user));
     }
     catch(error)
     {

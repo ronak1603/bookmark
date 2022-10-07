@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
- export const StyleMainDiv = styled.div`
+export const StyleMainDiv = styled.div`
   display:flex;
   flex-direction:row;`
 
-  export const LeftDiv = styled.div`
+export const LeftDiv = styled.div`
   height:97vh;
   width:55vw;
   background:linear-gradient(to right,#5352ed 65%,#ffffff 65%);
@@ -17,7 +17,7 @@ import styled from "styled-components";
   }
   `
 
-  export const HeadingDiv = styled.div`
+export const HeadingDiv = styled.div`
   height:5%;
   width:70%;
   // border: 1px solid black;
@@ -35,7 +35,7 @@ import styled from "styled-components";
   color: #FFFFFF;
   `
 
-  export const Rightdiv = styled.div`
+export const Rightdiv = styled.div`
     // background-color:whitesmoke;
     height:96vh;
     width:45vw;
@@ -54,7 +54,7 @@ import styled from "styled-components";
     }
     `
 
-  export const StyledDiv = styled.form`
+export const StyledDiv = styled.form`
     display:flex;
     flex-direction:column;
     width:70%;
@@ -85,7 +85,7 @@ import styled from "styled-components";
     }
     `
 
-    export const StyledInput = styled.input`
+export const StyledInput = styled.input`
     background: #FFFFFF;  
     border: 1px solid #F1F1FA;
     border-radius: 16px;
@@ -93,7 +93,11 @@ import styled from "styled-components";
     width: 70.5%;
     padding:2%;
     height: 6%;
+    outline:none;
     font-family: 'Inter', sans-serif;
+    &:hover {
+      box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+    }
     &::-webkit-input-placeholder{
       padding-left:3%;
     }
@@ -129,7 +133,10 @@ import styled from "styled-components";
       width:80%;
     }
     `
-    export const PasswordDiv = styled.div`
+export const PasswordDiv = styled.div`
+    &:hover {
+      box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+    }
       display:flex;
       flex-direction:row;
       align-items:center;
@@ -139,6 +146,7 @@ import styled from "styled-components";
       margin-top:7%;
       width: 71%;
       height: 5%;
+      outline:none;
       font-family: 'Inter', sans-serif;
       @media screen and (max-width:300px){
         height:5%;
@@ -169,11 +177,15 @@ import styled from "styled-components";
         width:80%;
       }
       `
-      export const PassInput = styled.input`
+export const PassInput = styled.input`
       width:95%;
       border:none;
       height:100%;
       padding:4%;
+      outline:none;
+      &:hover {
+        box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+      }
       border-radius: 16px;
       font-family: 'Inter', sans-serif;
       &::-webkit-input-placeholder{
@@ -183,12 +195,13 @@ import styled from "styled-components";
         height:100%;
       }
       `
-      export const EyeDiv = styled.div`
+export const EyeDiv = styled.div`
   padding-right:2%;
   margin-left:-2em;
+  cursor:pointer;
       `
 
-      export const CheckDiv = styled.div`
+export const CheckDiv = styled.div`
     display:flex;
     flex-direction:row;
     width:75%;
@@ -235,7 +248,7 @@ import styled from "styled-components";
     }
     `
 
-    export const CheckInput = styled.input`
+export const CheckInput = styled.input`
     width: 10%;
     height: 50%;
     padding: 0px 0px 8px 16px;
@@ -268,7 +281,7 @@ import styled from "styled-components";
     }
     `
 
-    export const CheckText = styled.p`
+export const CheckText = styled.p`
   width:100%;
   height:60%;
   font-family: 'Inter', sans-serif;
@@ -284,7 +297,7 @@ import styled from "styled-components";
   // }
   `
 
-  export const StyledButton = styled.button`
+export const StyledButton = styled.button`
     // padding: 8px 16px;
     width: 73%;
     height: 8%;
@@ -299,6 +312,9 @@ import styled from "styled-components";
     font-size: 90%;
     line-height: 22px;
     cursor:pointer;
+    &:hover {
+      box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+    }
     @media screen and (max-width:300px){
       height:7%;
       width:90%;
@@ -342,7 +358,7 @@ import styled from "styled-components";
     `
 
 
-    export const StyledText = styled.div`
+export const StyledText = styled.div`
     display:flex;
     justify-content:center;
     width:73%;
@@ -357,7 +373,7 @@ import styled from "styled-components";
       width:100%;
     }
       `
-      export const GoogleButton = styled.button`
+export const GoogleButton = styled.button`
     // padding: 8px 16px;
     width: 73%;
     height: 8%;
@@ -370,6 +386,10 @@ import styled from "styled-components";
     font-weight: 600;
     font-size: 90%;
     line-height: 50%;
+    cursor:pointer;
+    &:hover {
+      box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+    }
     display:flex;
     flex-direction:row;
     align-items:center;
@@ -403,7 +423,7 @@ import styled from "styled-components";
       width:80%;
     }`
 
-    export const StyleIconDiv = styled.div`
+export const StyleIconDiv = styled.div`
     display:flex;
     justify-content:center;
     width:10%;
@@ -435,7 +455,7 @@ import styled from "styled-components";
     }
     `
 
-    export const StyleIconText = styled.div`
+export const StyleIconText = styled.div`
     display:flex;
     margin-top:2%;
     @media screen and (max-width:400px){
@@ -460,7 +480,7 @@ import styled from "styled-components";
     }
     `
 
-    export const LoginText = styled.h4`
+export const LoginText = styled.h4`
     display:flex;
     justify-content:center;
     width:73%;
@@ -476,7 +496,7 @@ import styled from "styled-components";
     }
     `
 
-    export const Styleimg = styled.img`
+export const Styleimg = styled.img`
   height:85%;
   width:85%;
   margin-left:12%;
@@ -489,13 +509,13 @@ import styled from "styled-components";
     height:85%;
   }
   `
-  export const StyledLink = styled.a`
+export const StyledLink = styled.a`
   text-decoration:none;`
 
-  export const SignUpLink = styled.a`
+export const SignUpLink = styled.a`
   color: #5352ED;`
 
-  export const ErrorDiv = styled.div`
+export const ErrorDiv = styled.div`
   padding-top:2%;
   // margin-right:25%;
   font-size:small;

@@ -12,25 +12,32 @@ import { signUpRequest } from "./../../store/actions/index";
 import * as style from "./style";
 import foto from "./../../assests/foto.svg";
 import { signUpSchema } from "../../schemas/index"
+import ClipLoader from "react-spinners/ClipLoader";
+import styled from "styled-components";
 
 
 interface propsType {
   signUp: (obj: any) => void;
+  signingSpinner: boolean,
 }
+
+const SpinDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Div = styled.div`
+  margin-top: 15%;
+`;
+
 const Signup = (props: propsType) => {
-  // const [name, setName] = useState("");
-  // const [userId, setUserId] = useState("");
-  // const [password, setPassword] = useState("");
   const [togglePassword, setTogglePassword] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
 
   const initialValues = {
     name: "",
     email: "",
     password: "",
   };
-
-  // const navigate = useNavigate();
 
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
     useFormik({
@@ -49,10 +56,6 @@ const Signup = (props: propsType) => {
         action.resetForm();
       },
     });
-
-  // const inputSubmit = (): void => {
-  //   setPassword(".....");
-  // }
 
   const handleToggler = (): void => {
     setTogglePassword(prevTogglePassword => !prevTogglePassword)
@@ -116,7 +119,7 @@ const Signup = (props: propsType) => {
             <style.CheckText>By signing up, you agree to the <style.StyledLink href="/terms">Terms of Service and Privacy Policy</style.StyledLink></style.CheckText>
           </style.CheckDiv>
 
-          <style.StyledButton  type="submit">Sign Up</style.StyledButton>
+          <style.StyledButton  type="submit">{props.signingSpinner===true? "...signing in" : "Sign Up"}</style.StyledButton>
 
           <style.StyledText> Or with </style.StyledText>
 
@@ -125,9 +128,16 @@ const Signup = (props: propsType) => {
         </style.StyledDiv>
       </style.Rightdiv>
     </style.StyleMainDiv>
+    
   </Fragment>
   );
 };
+
+const mapStateToProps = (state:any) => {
+  return {
+    signingSpinner: state.userAuthReducer.signingSpinner,
+  }
+}
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
@@ -136,4 +146,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

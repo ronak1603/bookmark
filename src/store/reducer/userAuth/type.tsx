@@ -13,6 +13,7 @@ export interface stateType {
     users: userType[],
     error:string,
     loginSpinner: boolean,
+    signingSpinner: boolean,
   }
 
   type signUpSuccess = {

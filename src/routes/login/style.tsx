@@ -93,7 +93,11 @@ export const StyledInput = styled.input`
   margin-top:5%;
   width: 70.5%;
   height: 8%;
+  outline:none;
   font-family: 'Inter', sans-serif;
+  &:hover {
+    box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+  }
   &::-webkit-input-placeholder{
     padding-left:3%;
   }
@@ -131,6 +135,8 @@ export const PasswordDiv = styled.div`
     // flex-direction:row;
     align-items:center;
     background: #FFFFFF;
+    border:none;
+    outline:none;
    
     // border: 2px solid #F1F1FA;
     border-radius: 16px;
@@ -138,6 +144,9 @@ export const PasswordDiv = styled.div`
     width: 71%;
     height: 8%;
     font-family: 'Inter', sans-serif;
+    &:hover {
+      box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+    }
     @media screen and (max-width:300px){
       height:8%;
       width:90%;
@@ -170,6 +179,7 @@ export const PasswordDiv = styled.div`
 export const PassInput = styled.input`
     width:95%;
     border:none;
+    outline:none;
     padding-left:5%;
     height:100%;
     border: 1px solid #F1F1FA;
@@ -185,12 +195,13 @@ export const PassInput = styled.input`
 export const EyeDiv = styled.div`
 padding-right:2%;
 margin-left:-2em;
+cursor:pointer;
     `
 
 export const StyledButton = styled.button`
   // padding: 8px 16px;
   width: 73%;
-  height: 9%;
+  height: 8%;
   margin-top: 4%;
   background:#5352ED;
   color:white;
@@ -201,6 +212,10 @@ export const StyledButton = styled.button`
   font-weight: 600;
   font-size: 90%;
   line-height: 22px;
+  cursor:pointer;
+  &:hover {
+    box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+  }
   @media screen and (max-width:300px){
     height:9%;
     width:90%;
@@ -247,6 +262,7 @@ export const StyledText = styled.div`
   justify-content:center;
   width:73%;
   margin-top:5%;
+  cursor:pointer;
   font-family: 'Inter', sans-serif;
   @media screen and (max-width:600px){
     margin-top:3%;

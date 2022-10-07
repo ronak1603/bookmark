@@ -4,8 +4,9 @@ import * as actions from '../actions/index';
 
 export function* getBookmark(action:any) : any {
     try{
-        let user=action.payload;
-        let response = yield getBookmarkUrl(user);
+        const url = "https://bookmarks-app-server.herokuapp.com/".concat(`folder-bookmarks?folderId=${action.payload.id}`);
+        console.log(url);
+        let response = yield getBookmarkUrl(url); 
        
         yield put(actions.getBookmarkSuccess(response));
     }

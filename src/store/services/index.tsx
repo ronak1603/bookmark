@@ -65,6 +65,35 @@ export const getFoldersUrl = async (obj:any) => {
     return result;
 }
 
+export const deleteFolderUrl = async (obj:any) => {
+    const response = await fetch ("https://bookmarks-app-server.herokuapp.com/folder",{
+        method:'DELETE',
+        body: JSON.stringify(
+            obj
+        ),
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${auth}`, 
+        },
+    })
+    const result = await response.json();
+    return result;
+}
+
+export const getMeUrl = async () => {
+    const response = await fetch ("https://bookmarks-app-server.herokuapp.com/me",{
+        method:'GET',
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${auth}`, 
+        },
+    })
+    const result = await response.json();
+    return result;
+}
+
 export const renameUrl= async (obj:any) => {
     const response = await fetch ("https://bookmarks-app-server.herokuapp.com/rename-folder",{
         method:'PUT',
@@ -98,12 +127,9 @@ export const createBookmarkUrl= async (obj:any) => {
     return result;
 }
 
-export const getBookmarkUrl= async (obj:any) => {
-    const response = await fetch ("https://bookmarks-app-server.herokuapp.com/folder-bookmarks",{
+export const getBookmarkUrl= async (url:string) => {
+    const response = await fetch (url,{
         method:'GET',
-        body: JSON.stringify(
-            obj
-        ),
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -132,9 +158,24 @@ export const deleteBookmarkApi= async (obj:any) => {
 }
 
 export const moveBookmarkApi= async (obj:any) => {
-    console.log(obj);
     const response = await fetch ("https://bookmarks-app-server.herokuapp.com/move-bookmark",{
         method:'PATCH',
+        body: JSON.stringify(
+            obj
+        ),
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${auth}`, 
+        },
+    })
+    const result = await response.json();
+    return result;
+}
+
+export const favBookmarkApi= async (obj:any) => {
+    const response = await fetch ("https://bookmarks-app-server.herokuapp.com/toggle-favorite",{
+        method:'PUT',
         body: JSON.stringify(
             obj
         ),

@@ -6,7 +6,7 @@ export function* renameFolder(action:any) : any {
     try{
         let user=action.payload.obj;
         let response = yield renameUrl(user);
-        yield put(actions.renameSuccess(response));
+        yield put(actions.renameSuccess(user));
     }
     catch(error:any)
     {

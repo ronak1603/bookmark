@@ -1,11 +1,18 @@
 import { put } from "redux-saga/effects";
-import { createBookmarkUrl } from "../services";
+import { createBookmarkUrl, moveBookmarkApi } from "../services";
 import * as actions from '../actions/index';
 
 export function* createBookmark(action:any) : any {
     try{
-        let user=action.payload.obj;
-        let response= yield createBookmarkUrl(user);
+        let obj={
+            name:action.payload.obj.name,
+        url:action.payload.obj.url};
+        let response= yield createBookmarkUrl(obj);
+        let obj2 = {
+            folderId:action.payload.obj.folderId,
+            bookmarkId:response.id,
+        }
+        let response2=yield moveBookmarkApi(obj2);
         yield put(actions.createBookmarkSuccess(response));
     }
     catch(error)

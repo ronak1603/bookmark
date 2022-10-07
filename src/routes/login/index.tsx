@@ -9,10 +9,12 @@ import * as style from "../Login/style"
 import { loginRequest } from '../../store/actions';
 import { useFormik } from 'formik';
 import { signUpSchema } from '../../schemas';
+import styled from 'styled-components';
 
 
 interface propsType {
   login: (obj: any) => void;
+  loginSpinner: boolean,
 }
 function Login(props: propsType) {
   // const navigate = useNavigate();
@@ -23,22 +25,6 @@ function Login(props: propsType) {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [togglePassword, setTogglePassword] = useState(false);
-
-  // const inputIdHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-  //   setUserId(e.target.value);
-  // };
-
-  // const inputPassHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-  //   setPassword(e.target.value);
-  // };
-
-  // const inputSubmit = (): void => {
-  //   let obj = {
-  //     email: userId,
-  //     password: password,
-  //   }
-  //   props.login(obj);
-  // }
 
   const handleToggler = (): void => {
     setTogglePassword(prevTogglePassword => !prevTogglePassword)
@@ -80,6 +66,7 @@ function Login(props: propsType) {
              value={values.email}
              onChange={handleChange}
              onBlur={handleBlur}
+             required
           ></style.StyledInput>
           <style.ErrorDiv>{touched.email && errors.email ? (<p>{errors.email}</p>) : null}</style.ErrorDiv>
 
@@ -91,6 +78,7 @@ function Login(props: propsType) {
              value={values.password}
              onChange={handleChange}
              onBlur={handleBlur}
+             required
             ></style.PassInput>
 
             <style.EyeDiv onClick={handleToggler}>{togglePassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</style.EyeDiv>
@@ -98,7 +86,7 @@ function Login(props: propsType) {
           </style.PasswordDiv>
           <style.ErrorDiv>{touched.password && errors.password ? (<p>{errors.password}</p>) : null}</style.ErrorDiv>
 
-          <style.StyledButton type="submit">Login</style.StyledButton>
+          <style.StyledButton type="submit">{props.loginSpinner===true? "...Submitting" : "Submit"}</style.StyledButton>
 
           <style.StyledText><style.StyledLink href="/"><b>Forgot Password?</b></style.StyledLink></style.StyledText>
 
@@ -107,8 +95,15 @@ function Login(props: propsType) {
         </style.StyledDiv>
       </style.Rightdiv>
     </style.StyleMainDiv>
+
   </Fragment>
   )
+}
+
+const mapStateToProps = (state:any) => {
+  return {
+    loginSpinner: state.userAuthReducer.loginSpinner,
+  };
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -117,4 +112,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -6,13 +6,15 @@ const initialState: stateType = {
     users: [],
     error: "",
     loginSpinner: false,
+    signingSpinner: false,
 }
 
 export const userAuthReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case actionTypes.USER_SIGNUP_REQUEST:
             return {
-                ...state, loginSpinner: true,
+                ...state, 
+                signingSpinner: true,
             };
         case actionTypes.USER_SIGNUP_SUCCESS:
             return {
@@ -21,13 +23,13 @@ export const userAuthReducer = (state = initialState, action: any) => {
                     ...state.users,
                     { ...action.payload.user },
                 ],
-                loginSpinner: false,
+                signingSpinner: false,
             }
         case actionTypes.USER_SIGNUP_FAILURE:
             return {
                 ...state,
                 error: action.payload.message,
-                loginSpinner: false,
+                signingSpinner: false,
             }
         case actionTypes.USER_LOGIN_REQUEST:
             return {
