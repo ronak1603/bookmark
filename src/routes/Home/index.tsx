@@ -71,7 +71,7 @@ type propsType = {
   createFolder: (name: string) => void,
   getFolders: () => void,
   getMe: () => void,
-  getBookmark: (id: string) => void,
+  getBookmark: (id: string, name: string) => void,
   searchFolder: (name: string) => void,
   cancelFolder: () => void,
   toggleFavorite: (id: string) => void;
@@ -168,11 +168,12 @@ return (<>
 
       <style.FolderDiv>
         {props.folderSpinner ? <Div><ClipLoader /></Div> : props.folders.map((folder) => {
+          console.log(folderId);
           return (
-            <style.Folder key={folder.id}>
+            <style.Folder  id={folder.id} name={props.folderid} key={folder.id}>
               <IoMdArrowDropright />
               <style.FolderIcon><BsFillFolderFill /></style.FolderIcon>
-              <style.FolderName onClick={() => { props.getBookmark(folder.id) }} id={folder.id} >{folder.name}</style.FolderName>
+              <style.FolderName onClick={() => { props.getBookmark(folder.id, folder.name) }} id={folder.id} >{folder.name}</style.FolderName>
               <FolderCard id={folder.id} />
             </style.Folder>
           );
@@ -308,21 +309,6 @@ return (<>
                       />
                     )}
                   </style.HFavDiv>
-                  {/* <style.MoveVDiv>
-                    <VscFiles
-                      size="20px"
-                      color="#9D9B9F"
-                      onClick={() => {
-                        setMoveModal(true);
-                      }}
-                    />
-                  </style.MoveVDiv>
-                  <style.EditVDiv>
-                    <BiEditAlt size="20px" color="#9D9B9F" />
-                  </style.EditVDiv>
-                  <style.DeleteVDiv onClick={() => {deleteHandler(); setBId(bookmark.id);}}>
-                    <AiOutlineDelete size="20px" color="#9D9B9F" />
-                  </style.DeleteVDiv> */}
                   <HorizontalBookmark id={bookmark.id}></HorizontalBookmark>
                 </style.OtherVDiv>
                 {/* <Modal open={moveModal} >
@@ -422,6 +408,7 @@ const mapStateToProps = (state: any) => {
     Loading: state.foldersReducer.Loading,
     vertical: state.bookmarksReducer.vertical,
     folderid: state.bookmarksReducer.folderId,
+    folderName: state.bookmarksReducer.folderName,
     bookmarkProcessing: state.bookmarksReducer.bookmarkProcessing,
   }
 }
@@ -430,7 +417,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     createFolder: (name: string) => dispatch(createFolderRequest(name)),
     getFolders: () => dispatch(getFolderRequest()),
     getMe: () => dispatch(getMeRequest()),
-    getBookmark: (id: string) => dispatch(getBookmarkRequest(id)),
+    getBookmark: (id: string, name: string) => dispatch(getBookmarkRequest(id, name)),
     searchFolder: (name: string) => dispatch({ type: "SEARCH_FOLDER_REQUEST", payload: name }),
     cancelFolder: () => dispatch({ type: "CANCEL_FOLDER_REQUEST" }),
     toggleFavorite: (id: string) => dispatch(toggleFavoriteRequest(id)),

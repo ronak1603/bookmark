@@ -190,11 +190,12 @@ export const createBookmarkFailure = () => {
 }
 
 
-export const getBookmarkRequest = (id: string) => {
+export const getBookmarkRequest = (id: string, folderName:string) => {
     return {
         type: actionTypes.GET_BOOKMARK_REQUEST,
         payload: {
             id: id,
+            name:folderName,
         }
     }
 }

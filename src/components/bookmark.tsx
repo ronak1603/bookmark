@@ -23,6 +23,7 @@ type bookmarkType = {
     createBookmark: (obj: propsType) => void;
     bookmarks: any[],
     folders: any[],
+    folderName:string,
 }
 interface propsType {
     url: string;
@@ -36,17 +37,11 @@ const Bookmark = (props: bookmarkType) => {
     const [folder, setFolder] = useState("");
     const [urlName, setUrlName] = useState("");
     const [folderId, setFolderId] = useState("");
-    const [folderName, setFolderName] = useState("folder");
+
     const [openFolder, setOpenFolder] = useState(false);
     const [menu, setMenu] = useState(false);
-    const [message, setMessage] = useState('');
-    // const [Link, setLink] = React.useState<null | HTMLElement>(null);
+  
 
-    // const open = Boolean(Link);
-
-    // const handleClose = () => {
-    //     setLink(null);
-    // };
 
     const addBookmark = () => {
         let obj = {
@@ -58,7 +53,8 @@ const Bookmark = (props: bookmarkType) => {
         setBookmarkLink("");
         setFolder("");
         setUrlName("");
-        setFolderName("folder");
+        setFolderId("");
+       
     }
 
     return (<>
@@ -82,32 +78,12 @@ const Bookmark = (props: bookmarkType) => {
                     />
                     <style.Button
                         onClick={() => { setOpenFolder(true); setMenu(true); }}
-                        disabled={!urlName}
+                        
                     >
-                        {folder === "" ? folderName : folder}
+                    {folder === "" ? props.folderName : folder}
                     </style.Button>
-                    {/* <SetMenu
-                        id="menu"
-                        MenuListProps={{
-                            "aria-labelledby": "button",
-                        }}
-                        anchorEl={Link}
-                        open={open}
-                        onClose={handleClose}
-                    >
-                        {props.folders.map((folder) => {
-                            return (
-                                <MenuItem key={folder.id} onClick={()=>{setFolderName(folder.name);
-                                setFolderId(folder.id);
-                                setLink(null);
-                                }}>
-                                    <style.FolderIcon><BsFillFolderFill /></style.FolderIcon>
-                                    <style.FolderName id={folder.id} >{folder.name}</style.FolderName>
-                                </MenuItem>
-                            );
-                        })}
-                    </SetMenu> */}
-                    <style.SaveBookmark onClick={addBookmark}>Save</style.SaveBookmark>
+
+                    <style.SaveBookmark onClick={addBookmark} disabled={!urlName}>Save</style.SaveBookmark>
                 </style.RootFolder>
             </style.LeftLink>
             <style.RightLink><style.Img src={image} alt="AddLink" /></style.RightLink>
@@ -117,7 +93,7 @@ const Bookmark = (props: bookmarkType) => {
                     <styles.FolderItemsDiv>
                         {props.folders.map((folder: any) => {
                             return (
-                                <style.Folder
+                                <style.Folders
                                     onClick={() => {
                                         setFolder(folder.name);
                                         setFolderId(folder.id);
@@ -131,7 +107,7 @@ const Bookmark = (props: bookmarkType) => {
                                         </style.FolderIcon>
                                         <style.FolderName>{folder.name}</style.FolderName>
                                     </styles.ContentDiv>
-                                </style.Folder>
+                                </style.Folders>
                             );
                         })}
                     </styles.FolderItemsDiv>
@@ -151,6 +127,7 @@ const mapStateToProps = (state: any) => {
     return {
         bookmarks: state.bookmarksReducer.bookmarks,
         folders: state.foldersReducer.folders,
+        folderName: state.bookmarksReducer.folderName,
        
     }
 }

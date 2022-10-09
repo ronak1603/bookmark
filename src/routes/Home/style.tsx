@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled, {css} from "styled-components";
+
 
 export const MainDiv = styled.div`
 height:99vh;
@@ -53,8 +54,27 @@ display: flex;
     display: none;
   }
 `
+export const Folders = styled.div`
+display: flex;
+  align-items: center;
+  // border: 1px solid black;
+  padding: 2%;
+  box-sizing: border-box;
+  width: 80%;
+  margin-left:7%;
+  margin-top:1%;
+  &:hover {
+    background: #e4e3ff;
+    border-radius: 1em;
+  };
+`
+type folderProps = {id:string, name:any}
 
-export const Folder = styled.div`
+export const Folder = styled.div<folderProps>`
+${(props) => props.id===props.name && css`
+background: #E4E3FF;
+border-radius: 1em;`}
+
   display: flex;
   align-items: center;
   // border: 1px solid black;
@@ -304,7 +324,7 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-width: 50%;
+width: 55%;
 height: 25%;
 padding-left:15px;
 padding-right:15px;
@@ -339,7 +359,7 @@ margin-top:1%;
 display: flex;
 flex-direction: row;
 align-items: center;
-height: 20%;
+height: 22%;
 `;
 
 export const NameInput = styled.input`
@@ -348,7 +368,7 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-width: 35%;
+width: 38%;
 height: 100%;
 padding-left:15px;
 padding-right:15px;
@@ -373,13 +393,14 @@ align-items: center;
 margin-top:1%;
 height: 100%;
 border:none;
-background: #FFFFFF;
+background-color: #6c6bf9;
+color:#FFFFFF;
 border-radius: 16px;
-width:10%;
+width:13%;
 cursor:pointer;
 margin-left:6%;
 &:hover{
-  background: #e4e3ff;
+  // background: #e4e3ff;
   box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
 };
 `
@@ -391,13 +412,15 @@ align-items: center;
 margin-top:1%;
 height: 100%;
 border:none;
-background: #FFFFFF;
+// background: #FFFFFF;
 border-radius: 16px;
 width:10%;
+background-color: #6c6bf9;
+color:#FFFFFF;
 cursor:pointer;
 margin-left:6%;
 &:hover{
-  background: #e4e3ff;
+  // background: #e4e3ff;
   box-shadow: 0px 10px 20px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
 };
 `
@@ -597,17 +620,22 @@ export const Bookmark = styled.div`
 
 export const BookmarkImage = styled.div`
 // margin-top:2%;
-width:100%;
+margin-left:5%;
+width:90%;
 background:
 filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.06)) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.04));
-border-radius: 16px;
-height:60%;
+// border-radius: 16px;
+height:50%;
+:hover {
+  cursor: pointer;
+};
 // border:1px solid black;
 `
 export const Image = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 15px;
+  // object-fit: cover;
 `;
 export const BookmarkName = styled.div`
 margin-top:2%;
@@ -633,6 +661,10 @@ margin-top:1%;
 width:90%;
 height:18%;
 overflow-y:auto;
+scrollbar-width: none;
+&::-webkit-scrollbar {
+  display: none;
+}
 // border:1px solid black;
 `
 
@@ -668,7 +700,7 @@ export const HorizontalBookmarkImage = styled.div`
 export const HorizontalImage = styled.img`
 width:100%;
 height:100%;
-border-radius:10px;
+border-radius:12px;
 `
 export const HorizontalBookmarkTitle = styled.div`
     height: 80%;

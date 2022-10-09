@@ -9,6 +9,7 @@ export interface StateType {
     bookmarkProcessing: boolean;
     vertical: boolean;
     folderId: string;
+    folderName: string;
 }
 
 export const initialState = {
@@ -19,6 +20,7 @@ export const initialState = {
     bookmarkProcessing: false,
     vertical: false,
     folderId:"",
+    folderName:"",
 }
 
 export const bookmarksReducer = (state = initialState, action: any) => {
@@ -45,6 +47,7 @@ export const bookmarksReducer = (state = initialState, action: any) => {
                 ...state,
                 bookmarkSpinner: true,
                 folderId: action.payload.id,
+                folderName: action.payload.name,
             }
         case actionTypes.GET_BOOKMARK_SUCCESS:
             return {
