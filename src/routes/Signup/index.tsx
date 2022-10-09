@@ -14,6 +14,8 @@ import foto from "./../../assests/foto.svg";
 import { signUpSchema } from "../../schemas/index"
 import ClipLoader from "react-spinners/ClipLoader";
 import styled from "styled-components";
+import { Link
+ } from "react-router-dom";
 
 
 interface propsType {
@@ -124,7 +126,10 @@ const Signup = (props: propsType) => {
           <style.StyledText> Or with </style.StyledText>
 
           <style.GoogleButton ><style.StyleIconDiv><FcGoogle size="70%" /></style.StyleIconDiv><style.StyleIconText>Sign Up with Google</style.StyleIconText></style.GoogleButton>
-          <style.LoginText>Already have an account? &nbsp; <style.SignUpLink href="/login">Login</style.SignUpLink></style.LoginText>
+          <style.LoginText>Already have an account? &nbsp; <Link style={{ color: "#5352ed" }} to="/login">
+            {" "}
+            Login
+          </Link></style.LoginText>
         </style.StyledDiv>
       </style.Rightdiv>
     </style.StyleMainDiv>
