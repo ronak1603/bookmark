@@ -36,7 +36,7 @@ const elements = (component: ReactNode, privateRoute: boolean) => {
   return (
   <>
   <Navigate to = {privateRoute?'/login':'/home'}/>,
-  {/* <Navigate to = {privateRoute?'/':'/home'}/> */}
+  
   </>)
 };
 

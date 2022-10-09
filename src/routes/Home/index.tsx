@@ -167,7 +167,7 @@ return (<>
       </style.SearchDiv>
 
       <style.FolderDiv>
-        {props.folderSpinner ? <Div><ClipLoader /></Div> : props.folders.map((folder) => {
+        {props.folders.length===0 ? props.folderSpinner ? <Div><ClipLoader /></Div> :(<EmptyFoldersDiv><Icon><BsFillFolderFill size="40px"/></Icon><P>No Folders Found</P></EmptyFoldersDiv>) : props.folders.map((folder) => {
           console.log(folderId);
           return (
             <style.Folder  id={folder.id} name={props.folderid} key={folder.id}>
@@ -251,7 +251,7 @@ return (<>
       </style.searchdiv>
       {props.vertical === false ? (
         <style.GetBookmark>
-          {props.bookmarks.length === 0 ? props.bookmarkSpinner ? <SpinDiv><ClipLoader /></SpinDiv> : (<EmptyFolderDiv><Icon><BsJournalBookmarkFill /></Icon><P>No Bookmarks Found</P><Text>Keep content organized with Folders</Text></EmptyFolderDiv>) : props.bookmarks.map((bookmark) => {
+          {props.bookmarks.length === 0 ? props.bookmarkSpinner ? <SpinDiv><ClipLoader /></SpinDiv> : (<EmptyFolderDiv><Icon><BsJournalBookmarkFill size="30px"/></Icon><P>No Bookmarks Found</P><Text>Keep content organized with Folders</Text></EmptyFolderDiv>) : props.bookmarks.map((bookmark) => {
             return (
               <style.Bookmark key={uuidv4()}>
                 <style.BookmarkImage><style.Image src={bookmark.imageUrl === "" ? BookmarkImage : bookmark.imageUrl} /></style.BookmarkImage>
@@ -371,6 +371,23 @@ text-align:center;
 flex-direction:column;
 // flex-wrap:wrap;
 `
+
+const EmptyFoldersDiv = styled.div`
+display:flex;
+width:90%;
+margin-top:20%;
+padding-top:20%;
+padding-right:5%;
+margin-left:3%;
+justify-content:center;
+align-items:center;
+text-align:center;
+// border:1px solid black;
+// margin-left:40%;
+flex-direction:column;
+// flex-wrap:wrap;
+`
+
 const Icon = styled.div`
 color: #5352ED;
 `
